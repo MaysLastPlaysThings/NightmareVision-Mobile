@@ -22,7 +22,6 @@ import lime.app.Application;
 import gameObjects.*;
 import meta.data.*;
 import meta.data.Achievements.AchievementObject;
-import meta.data.Discord.DiscordClient;
 import meta.data.options.*;
 import meta.states.*;
 import meta.states.editors.*;
