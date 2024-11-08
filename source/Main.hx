@@ -1,6 +1,7 @@
 package;
 
 import sys.thread.Thread;
+import haxe.io.Path;
 import flixel.graphics.FlxGraphic;
 import flixel.FlxG;
 import flixel.FlxGame;
@@ -45,7 +46,7 @@ class Main extends Sprite
 
 		// Credits to MAJigsaw77 (he's the og author for this code)
 		#if android
-                Generic.initCrashHandler();
+    Generic.initCrashHandler();
 		Sys.setCwd(Path.addTrailingSlash(Generic.returnPath()));
 		#elseif ios
 		Sys.setCwd(lime.system.System.applicationStorageDirectory);
