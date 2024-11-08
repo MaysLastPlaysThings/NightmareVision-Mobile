@@ -109,6 +109,7 @@
 	<haxelib name="discord_rpc" if="DISCORD_ALLOWED"/>
 	<haxelib name="away3d"/>
 	<haxelib name="hxvlc" if="VIDEOS_ALLOWED"/>
+	<haxelib name="extension-androidtools" />
 
 	<!-- <haxedef name="FLX_NO_PITCH" /> -->
 
