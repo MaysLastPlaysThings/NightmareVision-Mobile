@@ -99,9 +99,12 @@ class Main extends Sprite
 		// #end
 
 		ClientPrefs.loadDefaultKeys();
+		#if desktop
 		addChild(new FNFGame(gameWidth, gameHeight, initialState, #if(flixel < "5.0.0")zoom,#end framerate, framerate, skipSplash, startFullscreen));
+		#else
+		addChild(new FNFGame(1280, 720, InitState, 60, 60, false, false));
+		#end
 
-		#if !mobile
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
 		addChild(fpsVar);
 		Lib.current.stage.align = "tl";
@@ -109,7 +112,6 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
-		#end
 		
 		// #if !DEBUG_MODE
 		// 	compilationInformation = new TextField();
@@ -121,7 +123,6 @@ class Main extends Sprite
 		// 	addChild(compilationInformation);
 		// #end
 
-
 		#if html5
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
@@ -130,16 +131,10 @@ class Main extends Sprite
 		FlxG.signals.gameResized.add(onResize);
 		FlxG.signals.preStateSwitch.add(onStateSwitch);
 		FlxG.scaleMode = scaleMode = new FunkinRatioScaleMode();
-
-
-
-
-
 	}
 	private static function onStateSwitch() {
 		scaleMode.resetSize();
 	}
-
 
 	static function onResize(w,h) 
 	{
@@ -157,7 +152,6 @@ class Main extends Sprite
 
 		@:privateAccess if (FlxG.cameras != null) for (i in FlxG.cameras.list) if (i != null && i._filters != null) resetSpriteCache(i.flashSprite);
 		if (FlxG.game != null) resetSpriteCache(FlxG.game);
-		
 	}
 	public static function resetSpriteCache(sprite:Sprite):Void
 	{
