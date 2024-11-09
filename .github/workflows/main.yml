@@ -44,7 +44,7 @@ jobs:
           haxelib install tjson
           haxelib install hxjsonast
           haxelib install away3d
-          haxelib install hxvlc 1.2.0
+          haxelib install hxvlc 1.4.1
           haxelib install flxanimate 3.0.4
           haxelib git linc_luajit https://github.com/mcagabe19-stuff/linc_luajit-rewriten.git
           haxelib install hscript 2.5.0
@@ -62,7 +62,7 @@ jobs:
           haxelib set lime 8.1.1
           haxelib set openfl 9.2.2
           haxelib set hscript 2.5.0
-          haxelib set hxvlc 1.2.0
+          haxelib set hxvlc 1.4.1
           haxelib set flxanimate 3.0.4
 
       - name: Configure Android
