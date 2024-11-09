@@ -28,6 +28,12 @@ class Init extends FlxState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
+		#if android
+		Sys.setCwd(haxe.io.Path.addTrailingSlash(SUtil.getPath()));
+		#elseif ios
+		Sys.setCwd(lime.system.System.applicationStorageDirectory);
+		#end
+
 		Paths.pushGlobalMods();
 		meta.data.WeekData.loadTheFirstEnabledMod();
 
