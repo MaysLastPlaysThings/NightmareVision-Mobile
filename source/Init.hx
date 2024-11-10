@@ -28,14 +28,10 @@ class Init extends FlxState
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
-		#if android
-		Sys.setCwd(haxe.io.Path.addTrailingSlash(SUtil.getPath()));
-		#elseif ios
-		Sys.setCwd(lime.system.System.applicationStorageDirectory);
-		#end
-
+    #if MODS_ALLOWED
 		Paths.pushGlobalMods();
-		meta.data.WeekData.loadTheFirstEnabledMod();
+		WeekData.loadTheFirstEnabledMod();
+		#end
 
 		FlxG.game.focusLostFramerate = 60;
 		FlxG.sound.muteKeys = muteKeys;
