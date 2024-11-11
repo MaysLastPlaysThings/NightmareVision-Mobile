@@ -228,7 +228,12 @@ class Paths
 			return file;
 		}
 		#end
+
+		#if mobile
+		return 'videos:assets/videos/$key.$VIDEO_EXT';	
+		#else
 		return 'assets/videos/$key.$VIDEO_EXT';
+		#end
 	}
 
 	static public function sound(key:String, ?library:String):Sound
