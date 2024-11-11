@@ -18,6 +18,9 @@ import meta.data.Discord;
 #end
 
 import Init;
+#if mobile
+import mobile.utils.StorageUtil;
+#end 
 
 import hxvlc.flixel.*;
 
