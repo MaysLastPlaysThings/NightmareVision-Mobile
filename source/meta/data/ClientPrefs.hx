@@ -25,7 +25,9 @@ class ClientPrefs {
 	public static var gpuCaching:Bool = true;
 	public static var loadingThreads:Int = Math.floor(Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS"))/2);
 	public static var multicoreLoading:Bool = false;
-
+	#if android
+	public static var storageType:String = "EXTERNAL_DATA";
+	#end
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var opponentStrums:Bool = true;
