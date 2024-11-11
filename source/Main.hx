@@ -17,7 +17,6 @@ import openfl.text.TextFormat;
 import openfl.display.StageScaleMode;
 import meta.states.*;
 import meta.data.*;
-import meta.CompilationStuff;
 
 class Main extends Sprite
 {
@@ -89,6 +88,7 @@ class Main extends Sprite
 		#if android
 		StorageUtil.requestPermissions();
 		#end
+
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -100,14 +100,6 @@ class Main extends Sprite
 			gameWidth = Math.ceil(stageWidth / zoom);
 			gameHeight = Math.ceil(stageHeight / zoom);
 		}
-
-		// #if !debug
-		// #if HIT_SINGLE
-		// initialState = meta.states.HitSingleInit;
-		// #else
-		// initialState = TitleState;		
-		// #end
-		// #end
 
 		ClientPrefs.loadDefaultKeys();
 		#if desktop
@@ -123,16 +115,6 @@ class Main extends Sprite
 		if(fpsVar != null) {
 			fpsVar.visible = ClientPrefs.showFPS;
 		}
-		
-		// #if !DEBUG_MODE
-		// 	compilationInformation = new TextField();
-		// 	compilationInformation.height = FlxG.stage.stageHeight/2;
-		// 	compilationInformation.width = FlxG.stage.stageWidth;
-		// 	compilationInformation.defaultTextFormat = new TextFormat('_sans', 48, FlxColor.WHITE, null, null, null, null, null, openfl.text.TextFormatAlign.CENTER);
-		// 	compilationInformation.text = Date.now().toString() + '\n' + Sys.environment()["USERNAME"].trim();
-		// 	compilationInformation.alpha = 0.675;
-		// 	addChild(compilationInformation);
-		// #end
 
 		#if html5
 		FlxG.autoPause = false;
@@ -153,13 +135,6 @@ class Main extends Sprite
 		if (fpsVar != null) {
 			fpsVar.scaleX = fpsVar.scaleY = scale;
 		}
-		// if (compilationInformation!=null) {
-
-		// 	compilationInformation.scaleX = compilationInformation.scaleY = Math.max(1,scale);
-		// 	compilationInformation.height = h;
-		// 	compilationInformation.width = w;
-		// 	compilationInformation.y = h/2;
-		// }
 
 		@:privateAccess if (FlxG.cameras != null) for (i in FlxG.cameras.list) if (i != null && i._filters != null) resetSpriteCache(i.flashSprite);
 		if (FlxG.game != null) resetSpriteCache(FlxG.game);

@@ -73,20 +73,18 @@ class Init extends FlxState
 		}
 		#end
 
-		#if HIT_SINGLE FlxG.switchState(new KUTValueHandler()); #else FlxG.switchState(new meta.states.TitleState()); #end
+	    FlxG.switchState(new meta.states.TitleState()); 
 	}
 
 	//lalala
 	public static function SwitchToPrimaryMenu(?cl:Class<FlxState>) 
 	{
-		#if HIT_SINGLE MusicBeatState.switchState(new meta.states.HitSingleMenu()); #else
         #if (haxe >= "4.3.0")
 		cl ??= MainMenuState;
         #else
 		cl = cl == null ? MainMenuState : cl;
         #end
 		MusicBeatState.switchState(cast (Type.createInstance(cl,[]),FlxState));//no but what the fuck
-		#end
 
 	}
 
