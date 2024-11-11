@@ -46,7 +46,7 @@ class Main extends Sprite
 
 		// Credits to MAJigsaw77 (he's the og author for this code)
 		#if android
-		Sys.setCwd(Path.addTrailingSlash(SUtil.getPath()));
+		Sys.setCwd(Path.addTrailingSlash(StorageUtil.getStorageDirectory()));
 		#elseif ios
 		Sys.setCwd(lime.system.System.applicationStorageDirectory);
 		#end
@@ -86,9 +86,9 @@ class Main extends Sprite
 
 	private function setupGame():Void
 	{
-	  #if mobile
-	  SUtil.doTheCheck();
-	  #end
+		#if android
+		StorageUtil.requestPermissions();
+		#end
 		var stageWidth:Int = Lib.current.stage.stageWidth;
 		var stageHeight:Int = Lib.current.stage.stageHeight;
 
@@ -113,7 +113,7 @@ class Main extends Sprite
 		#if desktop
 		addChild(new FNFGame(gameWidth, gameHeight, initialState, #if(flixel < "5.0.0")zoom,#end framerate, framerate, skipSplash, startFullscreen));
 		#else
-		addChild(new FNFGame(1280, 720, Init, 60, 60, false, false));
+		addChild(new FNFGame(1280, 720, !CopyState.checkExistingFiles() ? CopyState :  Init, 60, 60, false, false));
 		#end
 
 		fpsVar = new FPSCounter(10, 3, 0xFFFFFF);
