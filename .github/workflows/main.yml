@@ -33,8 +33,8 @@ jobs:
         run: |
           haxelib setup ~/haxelib
           haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp
-          haxelib install lime 8.1.1
-          haxelib install openfl 9.2.2
+          haxelib install lime
+          haxelib install openfl
           haxelib install flixel 5.2.2
           haxelib run lime setup flixel
           haxelib run lime setup
@@ -59,8 +59,6 @@ jobs:
           haxelib set flixel-tools 1.5.1
           haxelib set flixel-ui 2.5.0
           haxelib set flixel 5.2.2
-          haxelib set lime 8.1.1
-          haxelib set openfl 9.2.2
           haxelib set hscript 2.5.0
           haxelib set hxvlc 1.2.0
           haxelib set flxanimate 3.0.4
