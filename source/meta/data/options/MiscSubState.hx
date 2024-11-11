@@ -98,7 +98,7 @@ class MiscSubState extends BaseOptionsMenu
 	#if android
 	function onStorageChange():Void
 	{
-		File.saveContent(lime.system.System.applicationStorageDirectory + 'storagetype.txt', ClientPrefs.data.storageType);
+		File.saveContent(lime.system.System.applicationStorageDirectory + 'storagetype.txt', ClientPrefs.storageType);
 
 		var lastStoragePath:String = StorageType.fromStrForce(lastStorageType) + '/';
 
@@ -113,7 +113,7 @@ class MiscSubState extends BaseOptionsMenu
 	override public function destroy()
 	{
 		super.destroy();
-		if (ClientPrefs.data.storageType != lastStorageType)
+		if (ClientPrefs.storageType != lastStorageType)
 		{
 			onStorageChange();
 			CoolUtil.showPopUp('Storage Type has been changed and you needed restart the game!!\nPress OK to close the game.', 'Notice!');
