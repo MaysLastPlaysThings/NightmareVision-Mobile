@@ -132,6 +132,7 @@
 	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android" />
 	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT" if="android" />
 	<android target-sdk-version="35" if="android"/>
+	<android min-sdk-version="19" if="android"/>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
