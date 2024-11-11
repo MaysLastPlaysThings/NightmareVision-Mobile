@@ -1,6 +1,6 @@
 package meta.states;
 
-import Init
+import Init;
 import lime.utils.Assets as LimeAssets;
 import openfl.utils.Assets as OpenFLAssets;
 import flixel.addons.util.FlxAsyncLoop;
