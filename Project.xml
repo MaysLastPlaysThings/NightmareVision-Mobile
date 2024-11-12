@@ -128,6 +128,9 @@
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
 
+  <android permission="android.permission.READ_EXTERNAL_STORAGE" />
+  <android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
 	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT" if="android" />
 	<android target-sdk-version="33" if="android"/>
 	<android min-sdk-version="19" if="android"/>
