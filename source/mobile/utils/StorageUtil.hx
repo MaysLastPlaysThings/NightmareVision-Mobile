@@ -58,12 +58,12 @@ class StorageUtil
 		else
 			AndroidPermissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 
-		/*if (!AndroidEnvironment.isExternalStorageManager())
+		if (!AndroidEnvironment.isExternalStorageManager())
 		{
 			if (AndroidVersion.SDK_INT >= AndroidVersionCode.S)
 				AndroidSettings.requestSetting('REQUEST_MANAGE_MEDIA');
 			AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
-		}*/
+		}
 
 		if ((AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU
 			&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
