@@ -128,10 +128,16 @@
 	<!--In case you want to use nape with flixel-->
 	<!--<haxelib name="nape-haxe4" />-->
 
+  <section if="android">
   <config:android permission="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-	<android permission="android.permission.CAPTURE_AUDIO_OUTPUT" if="android" />
-	<android target-sdk-version="34" if="android"/>
-	<android min-sdk-version="19" if="android"/>
+  <config:android permission="android.permission.VIBRATE" />
+  <config:android permission="android.permission.INTERNET" />
+  <config:android permission="android.permission.ACCESS_WIFI_STATE"/>
+  <config:android permission="android.permission.ACCESS_NETWORK_STATE" />
+	<config:android permission="android.permission.CAPTURE_AUDIO_OUTPUT" />
+	<android target-sdk-version="34" />
+	<android min-sdk-version="19" />
+  </section>
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
