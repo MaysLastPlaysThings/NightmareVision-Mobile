@@ -45,7 +45,7 @@ class MiscSubState extends BaseOptionsMenu
 		title = 'Misc';
 		rpcTitle = 'Miscellaneous Menu'; //for Discord Rich Presence
 		var maxThreads:Int = Std.parseInt(Sys.getEnv("NUMBER_OF_PROCESSORS"));
-		if(maxThreads > 1){
+
 			var option:Option = new Option('Multi-thread Loading', //Name
 				'If checked, the mod can use multiple threads to speed up loading times on some songs.\nRecommended to leave on, unless it causes crashing', //Description
 				'multicoreLoading', //Save data variable name
@@ -66,17 +66,7 @@ class MiscSubState extends BaseOptionsMenu
 			option.displayFormat = '%v';
 
 			addOption(option);
-		}else{
-			// if you guys ever add more options to misc that dont rely on the thread count
-			var option:Option = new Option("Nothin' here!", //Name
-				"Usually there'd be options about multi-thread loading, but you only have 1 thread to use so no real use", //Description
-				'', //Save data variable name
-				'label', //Variable type
-				true
-			); //Default value
-			addOption(option);
-		}
-		
+
 		var option:Option = new Option('GPU Caching',
 			'If checked, GPU caching will be enabled.',
 			'gpuCaching',
