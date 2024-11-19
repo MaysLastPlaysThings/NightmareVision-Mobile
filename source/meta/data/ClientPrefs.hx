@@ -28,6 +28,7 @@ class ClientPrefs {
 	#if android
 	public static var storageType:String = "EXTERNAL_DATA";
 	#end
+	public static var mobileControlsType:String = "Touch";
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var opponentStrums:Bool = true;
