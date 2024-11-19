@@ -42,9 +42,10 @@ class MobileOptionsSubState extends BaseOptionsMenu
 
 		option = new Option('Controls Type', 
 		 'What controls do you want to use?',
-		 'storageType',
+		 'mobileControlsType',
 		 'string',
-		 'mobileControlsType');
+		 'Touch',
+			['Touch', 'V-Pad']);
 		addOption(option);
 
 		super();
