@@ -63,9 +63,9 @@ class StorageUtil
 	#if android
 	public static function requestPermissions():Void
 	{
-		if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU)
+		/*if (AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU)
 		 	AndroidPermissions.requestPermissions(['READ_MEDIA_IMAGES', 'READ_MEDIA_VIDEO', 'READ_MEDIA_AUDIO']);
-		else
+		else*/
 			AndroidPermissions.requestPermissions(['READ_EXTERNAL_STORAGE', 'WRITE_EXTERNAL_STORAGE']);
 
 		if (!AndroidEnvironment.isExternalStorageManager())
@@ -75,10 +75,10 @@ class StorageUtil
 			AndroidSettings.requestSetting('MANAGE_APP_ALL_FILES_ACCESS_PERMISSION');
 		}
 
-		if ((AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU
+		if (/*(AndroidVersion.SDK_INT >= AndroidVersionCode.TIRAMISU
 			&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_MEDIA_IMAGES'))
 			|| (AndroidVersion.SDK_INT < AndroidVersionCode.TIRAMISU
-				&& !AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE')))
+				&& */!AndroidPermissions.getGrantedPermissions().contains('android.permission.READ_EXTERNAL_STORAGE')/*)*/)
 			CoolUtil.showPopUp('If you accepted the permissions you are all good!' + '\nIf you didn\'t then expect a crash' + '\nPress OK to see what happens',
 				'Notice!');
 
@@ -115,7 +115,7 @@ class StorageUtil
 		dateNow = StringTools.replace(dateNow, " ", "_");
 		dateNow = StringTools.replace(dateNow, ":", "'");
 
-		var path:String = "crash/" + "crash_" + dateNow + ".txt";
+		var path:String = "logs/" + "logs_" + dateNow + ".txt";
 		var errMsg:String = "";
 
 		for (stackItem in callStack)
@@ -175,6 +175,7 @@ enum abstract StorageType(String) from String to String
 	var EXTERNAL_OBB = "EXTERNAL_OBB";
 	var EXTERNAL_MEDIA = "EXTERNAL_MEDIA";
 	var EXTERNAL = "EXTERNAL";
+	var NO_STORAGE = "NO_STORAGE";
 
 	public static function fromStr(str:String):StorageType
 	{
@@ -182,6 +183,7 @@ enum abstract StorageType(String) from String to String
 		final EXTERNAL_OBB = AndroidContext.getObbDir();
 		final EXTERNAL_MEDIA = AndroidEnvironment.getExternalStorageDirectory() + '/Android/media/' + lime.app.Application.current.meta.get('packageName');
 		final EXTERNAL = AndroidEnvironment.getExternalStorageDirectory() + '/.' + lime.app.Application.current.meta.get('file');
+		final NO_STORAGE = LimeSystem.applicationStorageDirectory;
 
 		return switch (str)
 		{
@@ -189,6 +191,7 @@ enum abstract StorageType(String) from String to String
 			case "EXTERNAL_OBB": EXTERNAL_OBB;
 			case "EXTERNAL_MEDIA": EXTERNAL_MEDIA;
 			case "EXTERNAL": EXTERNAL;
+			case "NO_STORAGE": NO_STORAGE;
 			default: StorageUtil.getExternalDirectory(str) + '.' + fileLocal;
 		}
 	}
@@ -199,6 +202,7 @@ enum abstract StorageType(String) from String to String
 		final EXTERNAL_OBB = forcedPath + 'Android/obb/' + packageNameLocal;
 		final EXTERNAL_MEDIA = forcedPath + 'Android/media/' + packageNameLocal;
 		final EXTERNAL = forcedPath + '.' + fileLocal;
+		final NO_STORAGE = LimeSystem.applicationStorageDirectory;
 
 		return switch (str)
 		{
@@ -206,6 +210,7 @@ enum abstract StorageType(String) from String to String
 			case "EXTERNAL_OBB": EXTERNAL_OBB;
 			case "EXTERNAL_MEDIA": EXTERNAL_MEDIA;
 			case "EXTERNAL": EXTERNAL;
+			case "NO_STORAGE": NO_STORAGE;
 			default: StorageUtil.getExternalDirectory(str) + '.' + fileLocal;
 		}
 	}
