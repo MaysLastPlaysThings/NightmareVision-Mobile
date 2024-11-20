@@ -160,7 +160,8 @@ class ClientPrefs {
 
 
 		FlxG.save.data.gpuCaching = gpuCaching;
-
+		FlxG.save.data.storageType = storageType;
+		FlxG.save.data.mobileControlsType = mobileControlsType;
 		FlxG.save.data.yoshi = yoshi;
 		FlxG.save.data.darnell = darnell;
 		FlxG.save.data.editorGradColors = editorGradColors;
@@ -226,7 +227,13 @@ class ClientPrefs {
 			Reflect.setField(kutData, i, Reflect.field(FlxG.save.data, i));
 
 		if (FlxG.save.data.gpuCaching != null) FlxG.save.data.gpuCaching = gpuCaching;
-		
+
+    #if android
+		if (FlxG.save.data.storageType != null) FlxG.save.data.storageType = storageType;
+		#end
+
+		if (FlxG.save.data.mobileControlsType != null) FlxG.save.data.mobileControlsType = mobileControlsType;
+
 		if(FlxG.save.data.yoshi != null) {
 			yoshi = FlxG.save.data.yoshi;
 		}
