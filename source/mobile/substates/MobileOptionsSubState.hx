@@ -26,7 +26,7 @@ import flixel.util.FlxTimer;
 import flixel.input.keyboard.FlxKey;
 import flixel.graphics.FlxGraphic;
 import meta.data.Controls;
-import meta.data.options.BaseOptionsMenu;
+import meta.data.options.*;
 import meta.data.*;
 import meta.states.*;
 import gameObjects.*;
