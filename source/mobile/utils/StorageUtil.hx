@@ -129,16 +129,16 @@ class StorageUtil
 
 		errMsg += e.error;
 
-		if (!FileSystem.exists(SUtil.getPath() + "crash"))
-		FileSystem.createDirectory(SUtil.getPath() + "crash");
+		if (!FileSystem.exists("logs"))
+		FileSystem.createDirectory("logs");
 
-		File.saveContent(SUtil.getPath() + path, errMsg + "\n");
+		File.saveContent(path, errMsg + "\n");
 
 		Sys.println(errMsg);
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 		Sys.println("Making a simple alert ...");
 
-		SUtil.applicationAlert("Uncaught Error :(!", errMsg);
+		StorageUtil.applicationAlert("Your game has crashed!", errMsg);
 		System.exit(0);
 	}
 
