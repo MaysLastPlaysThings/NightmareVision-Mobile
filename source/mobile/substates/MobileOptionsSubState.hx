@@ -50,7 +50,7 @@ class MobileOptionsSubState extends BaseOptionsMenu
 		rpcTitle = 'Mobile Settings Menu'; // for Discord Rich Presence
 
 		#if android
-		option = new Option('Storage Type', 'Which folder Psych Engine should use?\n(CHANGING THIS DELETES YOUR OLD FOLDER!!)', 'storageType', STRING,
+		option = new Option('Storage Type', 'Which folder Psych Engine should use?\n(CHANGING THIS DELETES YOUR OLD FOLDER!!)', 'storageType', 'string',
 			storageTypes);
 		addOption(option);
 		#end
