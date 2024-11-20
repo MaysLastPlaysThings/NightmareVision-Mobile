@@ -4,6 +4,14 @@ import lime.system.System as LimeSystem;
 import haxe.io.Path;
 import haxe.Exception;
 
+import openfl.events.UncaughtErrorEvent;
+import openfl.Lib;
+import haxe.CallStack.StackItem;
+import haxe.CallStack;
+import haxe.io.Path;
+import lime.app.Application;
+import lime.system.System;
+
 /**
  * A storage class for mobile.
  * @author Mihai Alexandru (M.A. Jigsaw), Karim Akra and Lily Ross (mcagabe19)
@@ -91,6 +99,52 @@ class StorageUtil
 		if (splitStorage)
 			paths = paths.replace('/storage/', '');
 		return paths.split(',');
+	}
+
+	public static function initCrashHandler()
+	{
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+	}
+	
+	public static function onCrash(e:UncaughtErrorEvent):Void
+	{
+		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var dateNow:String = Date.now().toString();
+		dateNow = StringTools.replace(dateNow, " ", "_");
+		dateNow = StringTools.replace(dateNow, ":", "'");
+
+		var path:String = "crash/" + "crash_" + dateNow + ".txt";
+		var errMsg:String = "";
+
+		for (stackItem in callStack)
+		{
+			switch (stackItem)
+			{
+				case FilePos(s, file, line, column):
+					errMsg += file + " (line " + line + ")\n";
+				default:
+					Sys.println(stackItem);
+			}
+		}
+
+		errMsg += e.error;
+
+		if (!FileSystem.exists(SUtil.getPath() + "crash"))
+		FileSystem.createDirectory(SUtil.getPath() + "crash");
+
+		File.saveContent(SUtil.getPath() + path, errMsg + "\n");
+
+		Sys.println(errMsg);
+		Sys.println("Crash dump saved in " + Path.normalize(path));
+		Sys.println("Making a simple alert ...");
+
+		SUtil.applicationAlert("Uncaught Error :(!", errMsg);
+		System.exit(0);
+	}
+
+	private static function applicationAlert(title:String, description:String)
+	{
+		Application.current.window.alert(description, title);
 	}
 
 	public static function getExternalDirectory(externalDir:String):String
