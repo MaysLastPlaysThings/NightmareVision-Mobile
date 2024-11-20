@@ -30,5 +30,5 @@ void main() {
     dst_offset *= (1. - p_m.t);
     
     vec2 dist_tex_coord = p_m.st + dst_offset;
-    gl_FragColor = flixel_texture2D(bitmap, dist_tex_coord); 
+    gl_FragColor = texture2D(bitmap, dist_tex_coord); 
 }

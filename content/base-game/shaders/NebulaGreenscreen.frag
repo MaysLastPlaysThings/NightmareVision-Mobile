@@ -53,7 +53,7 @@ void main()
 {
   vec2 uv = openfl_TextureCoordv;
 
-  vec4 rColor = flixel_texture2D(bitmap, uv);
+  vec4 rColor = texture2D(bitmap, uv);
   vec3 color = rColor.rgb * rColor.a;
 
   float incrustation = 1-chromaKey(color);

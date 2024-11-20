@@ -7,7 +7,7 @@ uniform float iTime;
 uniform sampler2D iChannel1;
 uniform sampler2D iChannel2;
 uniform sampler2D iChannel3;
-#define texture flixel_texture2D
+#define texture texture2D
 
 // third argument fix
 vec4 flixel_texture2D(sampler2D bitmap, vec2 coord, float bias) {

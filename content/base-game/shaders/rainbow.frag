@@ -5,7 +5,7 @@ uniform float val;
 void main()
 {
     vec2 uv = openfl_TextureCoordv;
-    vec4 tex0 = flixel_texture2D(bitmap, uv);
+    vec4 tex0 = texture2D(bitmap, uv);
     float H = mod(iTime+10, 3.);
     float S = 1.0+sat;       // Saturation scale 0-1
     float V = 1.0+val;                          // Value scale      0-1

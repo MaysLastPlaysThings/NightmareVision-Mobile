@@ -18,12 +18,12 @@ void main(void)
 
             float ex = (cos(d)*Size*i)/openfl_TextureSize.x;
             float why = (sin(d)*Size*i)/openfl_TextureSize.y;
-            Color += flixel_texture2D( bitmap, uv+vec2(ex,why));    
+            Color += texture2D( bitmap, uv+vec2(ex,why));    
         }
     }
     
     Color /= (dim * Quality) * Directions - 15.0;
-    vec4 bloom =  (flixel_texture2D( bitmap, uv)/ dim)+Color;
+    vec4 bloom =  (texture2D( bitmap, uv)/ dim)+Color;
 
     gl_FragColor = bloom;
 
