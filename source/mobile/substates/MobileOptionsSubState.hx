@@ -46,8 +46,8 @@ class MobileOptionsSubState extends BaseOptionsMenu
 	{
 		#if android if (!externalPaths.contains('\n'))
 			storageTypes = storageTypes.concat(externalPaths); #end
-		title = 'Mobile Options';
-		rpcTitle = 'Mobile Options Menu'; // for Discord Rich Presence
+		title = 'Mobile Settings';
+		rpcTitle = 'Mobile Settings Menu'; // for Discord Rich Presence
 
 		#if android
 		option = new Option('Storage Type', 'Which folder Psych Engine should use?\n(CHANGING THIS DELETES YOUR OLD FOLDER!!)', 'storageType', STRING,
