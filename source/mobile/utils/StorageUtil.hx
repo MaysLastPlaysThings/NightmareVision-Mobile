@@ -12,6 +12,8 @@ import haxe.io.Path;
 import lime.app.Application;
 import lime.system.System;
 
+using StringTools;
+
 /**
  * A storage class for mobile.
  * @author Mihai Alexandru (M.A. Jigsaw), Karim Akra and Lily Ross (mcagabe19)
