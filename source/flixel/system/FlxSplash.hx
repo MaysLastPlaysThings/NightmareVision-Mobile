@@ -57,10 +57,26 @@ class FlxSplash extends MusicBeatState
 		#end
 
 		new FlxTimer().start(1, function(tmr:FlxTimer){
-			video = new FlxVideo();
-			video.onEndReached.add(onComplete,true);
-			video.load(Paths.video('intro'));
-			video.play();
+		var fileName:String = Paths.video('intro');
+
+			var bg = new FlxSprite(-FlxG.width, -FlxG.height).makeGraphic(FlxG.width * 3, FlxG.height * 3, FlxColor.BLACK);
+			bg.scrollFactor.set();
+			add(bg);
+			var vid = new FlxVideo();
+			vid.onEndReached.add(()->{
+				remove(bg);
+		FlxG.cameras.bgColor = _cachedBgColor;
+		FlxG.fixedTimestep = _cachedTimestep;
+		FlxG.autoPause = _cachedAutoPause;
+		#if FLX_KEYBOARD
+		FlxG.keys.enabled = true;
+		#end
+		vid.dispose();
+		FlxG.switchState(Type.createInstance(nextState, []));
+		FlxG.game._gameJustStarted = true;
+			});
+			vid.load(fileName);
+			vid.play();
 		});
 
 		// _times = [0.041, 0.184, 0.334, 0.495, 0.636];
