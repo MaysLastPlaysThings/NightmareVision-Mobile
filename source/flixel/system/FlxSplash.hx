@@ -17,7 +17,7 @@ import flixel.util.FlxTimer;
 import meta.states.*;
 import meta.data.*;
 
-class FlxSplash extends MusicBeatState
+class FlxSplash extends FlxState
 {
 	public static var nextState:Class<FlxState>;
 
