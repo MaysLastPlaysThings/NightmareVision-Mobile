@@ -65,6 +65,7 @@
 	<define name="hscriptPos" if="debug" />
 
 	<assets path="assets/preload" rename="assets"/>
+	<assets path="mobile" rename="assets/mobile" if="mobile" />
 
 	<library name="videos"        preload="true" />
 	<library name="songs"         preload="true" />
