@@ -30,7 +30,7 @@ class ClientPrefs {
 	#end
 	#if mobile
 	public static var padalpha:Float = 0.5;
-	public static var hitboxalpha:Float = 0.2;
+	public static var hitboxalpha:Float = 0.1;
 	public static var mobileControlsType:String = "V-Pad";
 	#end
 	public static var downScroll:Bool = false;
