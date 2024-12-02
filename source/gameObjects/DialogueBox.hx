@@ -16,7 +16,7 @@ using StringTools;
 
 class DialogueBox extends FlxSpriteGroup
 {
-		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER || controls.ACCEPT;
+		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 	var box:FlxSprite;
 
 	var curCharacter:String = '';
