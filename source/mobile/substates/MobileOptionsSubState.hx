@@ -56,6 +56,24 @@ class MobileOptionsSubState extends BaseOptionsMenu
 		addOption(option);
 		#end
 
+		var option:Option = new Option('V-Pad Opacity', // mariomaster was here again
+			'Changes V-Pad Opacity -yeah ', 'padalpha', 'float', 0.5);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0.1; // prevent invisible vpad
+		option.maxValue = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
+		addOption(option);
+
+		var option:Option = new Option('Hitbox Opacity', // mariomaster is dead :00000
+			'Changes Hitbox opacity -what', 'hitboxalpha', 'float', 0.1);
+		option.scrollSpeed = 1.6;
+		option.minValue = 0.0;
+		option.maxValue = 1;
+		option.changeValue = 0.01;
+		option.decimals = 2;
+		addOption(option);
+
 		/*option = new Option('Controls Type', 
 		 'What controls do you want to use?',
 		 'mobileControlsType',
