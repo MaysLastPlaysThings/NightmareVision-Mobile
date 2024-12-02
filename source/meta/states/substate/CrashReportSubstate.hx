@@ -72,7 +72,7 @@ class CrashReportSubstate extends FlxState {
 		{
 			if (touch.justPressed)
 			{
-				pressedEnter = true;
+				pressedSpace = true;
 			}
 		}
 		#end
