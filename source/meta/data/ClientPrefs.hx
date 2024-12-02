@@ -28,7 +28,11 @@ class ClientPrefs {
 	#if android
 	public static var storageType:String = "EXTERNAL";
 	#end
+	#if mobile
+	public static var padalpha:Float = 0.5;
+	public static var hitboxalpha:Float = 0.2;
 	public static var mobileControlsType:String = "V-Pad";
+	#end
 	public static var downScroll:Bool = false;
 	public static var middleScroll:Bool = false;
 	public static var opponentStrums:Bool = true;
@@ -160,8 +164,14 @@ class ClientPrefs {
 
 
 		FlxG.save.data.gpuCaching = gpuCaching;
+    #if android
 		FlxG.save.data.storageType = storageType;
+    #end
+    #if mobile
+		FlxG.save.data.padalpha = padalpha;
+		FlxG.save.data.hitboxalpha = hitboxalpha;
 		FlxG.save.data.mobileControlsType = mobileControlsType;
+		#end
 		FlxG.save.data.yoshi = yoshi;
 		FlxG.save.data.darnell = darnell;
 		FlxG.save.data.editorGradColors = editorGradColors;
@@ -229,10 +239,18 @@ class ClientPrefs {
 		if (FlxG.save.data.gpuCaching != null) FlxG.save.data.gpuCaching = gpuCaching;
 
     #if android
-		if (FlxG.save.data.storageType != null) FlxG.save.data.storageType = storageType;
+		if (FlxG.save.data.storageType != null) storageType = FlxG.save.data.storageType;
 		#end
 
-		if (FlxG.save.data.mobileControlsType != null) FlxG.save.data.mobileControlsType = mobileControlsType;
+    #if mobile
+		if (FlxG.save.data.padalpha != null)
+			padalpha = FlxG.save.data.padalpha;
+
+		if (FlxG.save.data.hitboxalpha != null)
+			hitboxalpha = FlxG.save.data.hitboxalpha;
+
+		if (FlxG.save.data.mobileControlsType != null) mobileControlsType = FlxG.save.data.mobileControlsType;
+		#end
 
 		if(FlxG.save.data.yoshi != null) {
 			yoshi = FlxG.save.data.yoshi;
