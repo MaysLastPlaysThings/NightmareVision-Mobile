@@ -16,9 +16,16 @@ import flixel.FlxState;
 import flixel.FlxBasic;
 import meta.data.*;
 import gameObjects.*;
-
 import meta.data.scripts.*;
 import meta.data.scripts.Globals;
+#if mobile
+import mobile.MobileControls;
+import mobile.flixel.FlxVirtualPad;
+import flixel.FlxCamera;
+import flixel.input.actions.FlxActionInput;
+import flixel.util.FlxDestroyUtil;
+#end
+
 class MusicBeatState extends FlxUIState
 {
 	private var curSection:Int = 0;
