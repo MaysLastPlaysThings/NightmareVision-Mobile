@@ -41,19 +41,35 @@ class OptionsState extends MusicBeatState
 	function openSelectedSubstate(label:String) {
 		switch(label) {
 			case 'Notes':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.NoteSettingsSubState());
 			case 'Controls':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.ControlsSubState());
 			case 'Graphics':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.GraphicsSettingsSubState());
 			case 'Visuals and UI':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.VisualsUISubState());
 			case 'Gameplay':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.GameplaySettingsSubState());
 			case 'Loading':
+				#if mobile
+				removeVirtualPad();
+				#end
 				openSubState(new meta.data.options.MiscSubState());
-			case 'Mobile Settings':
-				openSubState(new mobile.substates.MobileOptionsSubState());
 			case 'Adjust Delay and Combo':
 				LoadingState.loadAndSwitchState(new meta.data.options.NoteOffsetState());
 		}
@@ -91,6 +107,25 @@ class OptionsState extends MusicBeatState
 		selectorRight = new Alphabet(0, 0, '<', true, false);
 		add(selectorRight);
 
+		#if mobile
+		addVirtualPad(UP_DOWN, A_B_X_Y);
+		addVirtualPadCamera(false);
+		#end
+
+		#if mobile
+		var sus:FlxText = new FlxText(10, 14, 0, 'Press X to customize your android controls', 16);
+		sus.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		sus.borderSize = 2.4;
+		sus.scrollFactor.set();
+		add(sus); // sus??!?!
+
+		var sussy:FlxText = new FlxText(10, 32, 0, 'Press Y to customize opacity for your android controls', 16);
+		sussy.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		sussy.borderSize = 2.4;
+		sussy.scrollFactor.set();
+		add(sussy); // even more sus!
+		#end
+
 		changeSelection();
 		ClientPrefs.saveSettings();
 
@@ -104,6 +139,19 @@ class OptionsState extends MusicBeatState
 
 	override function update(elapsed:Float) {
 		super.update(elapsed);
+
+		#if mobile
+		if (virtualPad.buttonX.justPressed)
+		{
+			removeVirtualPad();
+			openSubState(new mobile.substates.MobileControlsSubState());
+		}
+		if (virtualPad.buttonY.justPressed)
+		{
+			removeVirtualPad();
+			openSubState(new mobile.substates.MobileOptionsSubState());
+		}
+		#end
 
 		if (controls.UI_UP_P) {
 			changeSelection(-1);
