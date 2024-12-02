@@ -46,17 +46,26 @@ class NoteSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Customize',
-			'Change your note colours\n[Press Enter]',
+			'Change your note colours\n[Press A Button]',
 			'',
 			'button',
 			true);
 		option.callback = function(){
 			switch(ClientPrefs.noteSkin){
 				case 'Quants':
+			   #if mobile
+				 removeVirtualPad();
+				 #end
 					openSubState(new QuantNotesSubState());
 				case 'QuantStep':
+			   #if mobile
+				 removeVirtualPad();
+				 #end
 					openSubState(new QuantNotesSubState());
 				default:
+			   #if mobile
+				 removeVirtualPad();
+				 #end
 					openSubState(new NotesSubState());
 			}
 		}
