@@ -234,7 +234,11 @@ class QuantNotesSubState extends MusicBeatSubstate
 
 		if (controls.BACK || (changingNote && controls.ACCEPT)) {
 			if(!changingNote) {
+			  #if mobile
+			  FlxG.resetState();
+			  #else
 				close();
+				#end
 			} else {
 				changeSelection();
 			}
