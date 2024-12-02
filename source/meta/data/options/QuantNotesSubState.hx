@@ -120,7 +120,7 @@ class QuantNotesSubState extends MusicBeatSubstate
 			}
 
 			var note:FlxSprite = new FlxSprite(posX, yPos);
-			note.frames = Paths.getSparrowAtlas('QUANTNOTE_assets');
+			note.frames = Paths.getSparrowAtlas('QUANTNOTE_assets', 'shared');
 
 			var txt:AttachedText = new AttachedText(quantizations[i], 0, 0, true);
 			txt.sprTracker = note;
@@ -144,6 +144,11 @@ class QuantNotesSubState extends MusicBeatSubstate
 		hsbText.x = posX + 240;
 		add(hsbText);
 
+		#if mobile
+		addVirtualPad(LEFT_FULL, A_B_C);
+		addVirtualPadCamera();
+		#end
+
 		changeSelection();
 	}
 
@@ -157,7 +162,7 @@ class QuantNotesSubState extends MusicBeatSubstate
 				} else if(controls.UI_RIGHT_P) {
 					updateValue(1);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
-				} else if(controls.RESET) {
+				} else if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end   ) {
 					resetValue(curSelected, typeSelected);
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 				}
@@ -198,7 +203,7 @@ class QuantNotesSubState extends MusicBeatSubstate
 				changeType(1);
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 			}
-			if(controls.RESET) {
+			if(controls.RESET #if mobile || virtualPad.buttonC.justPressed #end   ) {
 				for (i in 0...3) {
 					resetValue(curSelected, i);
 				}
