@@ -33,7 +33,7 @@ jobs:
           haxelib install hxjsonast
           haxelib install away3d
           haxelib install hxvlc 1.4.1
-          haxelib install flxanimate 3.0.4
+          haxelib git flxanimate https://github.com/ShadowMario/flxanimate dev
           haxelib git linc_luajit https://github.com/mcagabe19-stuff/linc_luajit-rewriten.git
           haxelib install hscript 2.5.0
           haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
