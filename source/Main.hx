@@ -227,16 +227,6 @@ class FNFGame extends FlxGame
 					trace(stackItem);
 			}
 		}
-    		/*if (!FileSystem.exists('crash'))
-				FileSystem.createDirectory('crash');
-
-				File.saveContent('crash/'
-					+ Lib.application.meta.get('file')
-					+ '-'
-					+ Date.now().toString().replace(' ', '-').replace(':', "'")
-					+ '.log',
-					e.message, emsg
-					+ '\n');*/
 
 		FlxG.switchState(new meta.states.substate.CrashReportSubstate(FlxG.state, emsg, e.message));
 	}
