@@ -150,8 +150,13 @@ class PauseSubState extends MusicBeatSubstate
 		cameras = [cam];
 
 		#if mobile
+		if (!PlayState.chartingMode) {
 		addVirtualPad(UP_DOWN, A);
 		addVirtualPadCamera(false);
+		} else {
+		addVirtualPad(LEFT_FULL, A_B);
+		addVirtualPadCamera(false);
+		}
 		#end
 
 		super.create();
