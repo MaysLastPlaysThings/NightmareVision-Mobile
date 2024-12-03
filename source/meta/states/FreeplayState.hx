@@ -291,8 +291,8 @@ class FreeplayState extends MusicBeatState
 		var accepted = controls.ACCEPT;
 		var space = FlxG.keys.justPressed.SPACE #if mobile || virtualPad.buttonY.justPressed #end;
 		var ctrl = FlxG.keys.justPressed.CONTROL #if mobile || virtualPad.buttonC.justPressed #end;
-		var reset = controls.RESET #if mobile || virtualPad.buttonX.justPressed #end
-		var shift = FlxG.keys.pressed.SHIFT #if mobile || virtualPad.buttonZ.justPressed #end
+		var reset = controls.RESET #if mobile || virtualPad.buttonX.justPressed #end;
+		var shift = FlxG.keys.pressed.SHIFT #if mobile || virtualPad.buttonZ.justPressed #end;
 
 		var shiftMult:Int = 1;
 		if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
