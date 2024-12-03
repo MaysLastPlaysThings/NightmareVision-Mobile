@@ -216,8 +216,8 @@ class StoryMenuState extends MusicBeatState
 		{
 			var upP = controls.UI_UP_P;
 			var downP = controls.UI_DOWN_P;
-			var control = FlxG.keys.justPressed.CONTROL #if mobile || virtualPad.buttonX.justPressed #end
-			var reset = controls.RESET #if mobile || virtualPad.buttonX.justPressed #end
+			var control = FlxG.keys.justPressed.CONTROL #if mobile || virtualPad.buttonX.justPressed #end;
+			var reset = controls.RESET #if mobile || virtualPad.buttonX.justPressed #end;
 
 			if (upP)
 			{
