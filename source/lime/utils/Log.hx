@@ -4,7 +4,6 @@ import haxe.PosInfos;
 import sys.io.File;
 import sys.FileSystem;
 import openfl.Lib; // I FORGOR
-import mobile.utils.StorageUtil;
 
 using StringTools; // AGAIN
 
@@ -37,18 +36,6 @@ class Log
 
 			if (throwErrors)
 			{
-				if (!FileSystem.exists(StorageUtil.getStorageDirectory() + 'crash'))
-					FileSystem.createDirectory(StorageUtil.getStorageDirectory() + 'crash');
-
-				File.saveContent(StorageUtil.getStorageDirectory()
-					+ 'crash/'
-					+ Lib.application.meta.get('file')
-					+ '-'
-					+ Date.now().toString().replace(' ', '-').replace(':', "'")
-					+ '.log',
-					message
-					+ '\n');
-				Lib.application.window.alert(message, 'Error!');
 				throw message;
 			}
 			else
