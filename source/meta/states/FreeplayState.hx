@@ -204,13 +204,8 @@ class FreeplayState extends MusicBeatState
 		var size:Int = 18;
 		#end
 		#else
-		#if PRELOAD_ALL
 		var leText:String = "Press Y to listen to the Song / Press C to open the Gameplay Changers Menu / Press X to Reset your Score and Accuracy.";
 		var size:Int = 16;
-		#else
-		var leText:String = "Press C to open the Gameplay Changers Menu / Press X to Reset your Score and Accuracy.";
-		var size:Int = 18;
-		#end
   	#end
 		var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, leText, size);
 		text.setFormat(Paths.font("vcr.ttf"), size, FlxColor.WHITE, RIGHT);
@@ -353,7 +348,6 @@ class FreeplayState extends MusicBeatState
 		{
 			if(instPlaying != curSelected)
 			{
-				#if PRELOAD_ALL
 				destroyFreeplayVocals();
 				FlxG.sound.music.volume = 0;
 				Paths.currentModDirectory = songs[curSelected].folder;
@@ -371,7 +365,6 @@ class FreeplayState extends MusicBeatState
 				vocals.looped = true;
 				vocals.volume = 0.7;
 				instPlaying = curSelected;
-				#end
 			}
 		}
 
