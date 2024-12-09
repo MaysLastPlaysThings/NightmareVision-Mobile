@@ -42,6 +42,9 @@ class FlxSplash extends MusicBeatState
 
 	override public function create():Void
 	{
+	 	#if android
+		FlxG.android.preventDefaultKeys = [BACK];
+		#end
 		_cachedBgColor = FlxG.cameras.bgColor;
 		FlxG.cameras.bgColor = FlxColor.BLACK;
 
