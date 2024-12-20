@@ -540,11 +540,15 @@ class WeekEditorState extends MusicBeatState
 		var data:String = Json.stringify(weekFile, "\t");
 		if (data.length > 0)
 		{
+		  #if desktop
 			_file = new FileReference();
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 			_file.save(data, weekFileName + ".json");
+			#else
+			StorageUtil.saveContent(data, weekFileName + ".json");
+			#end
 		}
 	}
 	
@@ -628,6 +632,8 @@ class WeekEditorFreeplayState extends MusicBeatState
 
 		addEditorBox();
 		changeSelection();
+		#if mobile
+		addVirtualPad(LEFT_FULL, NONE);
 		super.create();
 	}
 	
